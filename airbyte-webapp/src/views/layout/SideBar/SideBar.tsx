@@ -3,7 +3,7 @@ import { faRocket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classnames from "classnames";
 import React from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { NavLink, useLocation } from "react-router-dom";
 
 import { Link } from "components";
@@ -14,6 +14,7 @@ import { useConfig } from "config";
 import { useCurrentWorkspace } from "hooks/services/useWorkspace";
 import { links } from "utils/links";
 
+import { DropdownMenu } from "../../../components/ui/DropdownMenu";
 import { DocsIcon } from "../../../components/icons/DocsIcon";
 import { RoutePaths } from "../../../pages/routePaths";
 import ConnectionsIcon from "./components/ConnectionsIcon";
@@ -21,7 +22,6 @@ import DestinationIcon from "./components/DestinationIcon";
 import OnboardingIcon from "./components/OnboardingIcon";
 import RecipesIcon from "./components/RecipesIcon";
 import SettingsIcon from "./components/SettingsIcon";
-import { SidebarDropdownMenu, SidebarDropdownMenuItemType } from "./components/SidebarDropdownMenu";
 import SourceIcon from "./components/SourceIcon";
 import { NotificationIndicator } from "./NotificationIndicator";
 import styles from "./SideBar.module.scss";
@@ -41,6 +41,7 @@ const SideBar: React.FC = () => {
   const config = useConfig();
   const workspace = useCurrentWorkspace();
   const navLinkClassName = useCalculateSidebarStyles();
+  const { formatMessage } = useIntl();
 
   return (
     <nav className={styles.nav}>
@@ -95,32 +96,39 @@ const SideBar: React.FC = () => {
           </a>
         </li>
         <li>
-          <SidebarDropdownMenu
-            label={{
-              icon: <DocsIcon />,
-              displayName: <FormattedMessage id="sidebar.resources" />,
-            }}
+          <DropdownMenu
+            placement="right"
+            displacement={10}
             options={[
               {
-                type: SidebarDropdownMenuItemType.LINK,
+                as: "a",
                 href: links.docsLink,
                 icon: <DocsIcon />,
-                displayName: <FormattedMessage id="sidebar.documentation" />,
+                displayName: formatMessage({ id: "sidebar.documentation" }),
               },
               {
-                type: SidebarDropdownMenuItemType.LINK,
+                as: "a",
                 href: links.slackLink,
                 icon: <FontAwesomeIcon icon={faSlack} />,
-                displayName: <FormattedMessage id="sidebar.joinSlack" />,
+                displayName: formatMessage({ id: "sidebar.joinSlack" }),
               },
               {
-                type: SidebarDropdownMenuItemType.LINK,
+                as: "a",
                 href: links.tutorialLink,
                 icon: <RecipesIcon />,
-                displayName: <FormattedMessage id="sidebar.recipes" />,
+                displayName: formatMessage({ id: "sidebar.recipes" }),
               },
             ]}
-          />
+          >
+            {({ open }) => (
+              <button className={classNames(styles.dropdownMenuButton, { [styles.open]: open })}>
+                <DocsIcon />
+                <Text className={styles.text} size="sm">
+                  <FormattedMessage id="sidebar.resources" />
+                </Text>
+              </button>
+            )}
+          </DropdownMenu>
         </li>
         <li>
           <NavLink className={navLinkClassName} to={RoutePaths.Settings}>
