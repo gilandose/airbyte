@@ -45,10 +45,10 @@ interface GeographySelectOption {
 }
 
 export const GeographyDropdown: React.FC<DropdownProps<GeographySelectOption>> = ({ options }) => {
-  const [option, setOption] = useState();
+  const [option, setOption] = useState({});
   const { formatMessage } = useIntl();
-  const handleOptionSelect = (e: any) => {
-    setOption(e.label);
+  const handleOptionSelect = (event: { label: string }) => {
+    setOption(event.label);
   };
 
   const formatOptionLabel = ({ label }: { label: string }) => {
@@ -57,7 +57,9 @@ export const GeographyDropdown: React.FC<DropdownProps<GeographySelectOption>> =
         <div className={styles.flag}>
           <span className={`fi fi-${label === "auto" ? "us" : label}`} />
         </div>
-        <span className={styles.label}>{formatMessage({ id: `geography.${label}` })}</span>
+        <span className={styles.label}>
+          {formatMessage({ id: `geography.${label}`, defaultMessage: label.toUpperCase() })}
+        </span>
       </div>
     );
   };
@@ -102,7 +104,7 @@ export const GeographyDropdown: React.FC<DropdownProps<GeographySelectOption>> =
       value={option}
       formatOptionLabel={formatOptionLabel}
       styles={customStyles}
-      placeholder="Select a region..."
+      placeholder={formatMessage({ id: "geography.select" })}
     />
   );
 };
