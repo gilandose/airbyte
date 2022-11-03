@@ -18,8 +18,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * This file will soon be removed. Any change to this file should also be duplicated to
- * MongodbDestinationStrictEncrypt.java in the destination-mongodb module.
+ * Currently this is a duplicate of the same file within destination-mongodb-strict-encrypt module.
+ * Original file can be deleted once the migration of multi-variant connector is done
  */
 public class MongodbDestinationStrictEncrypt extends SpecModifyingDestination implements Destination {
 

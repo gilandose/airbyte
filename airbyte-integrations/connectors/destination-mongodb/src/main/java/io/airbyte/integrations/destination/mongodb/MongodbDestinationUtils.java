@@ -7,7 +7,7 @@ package io.airbyte.integrations.destination.mongodb;
 import com.fasterxml.jackson.databind.JsonNode;
 import io.airbyte.db.jdbc.JdbcUtils;
 
-public class MongoDbDestinationUtils {
+public class MongodbDestinationUtils {
 
   public static final String MONGODB_SERVER_URL = "mongodb://%s%s:%s/%s?authSource=admin&ssl=%s";
   public static final String MONGODB_CLUSTER_URL = "mongodb+srv://%s%s/%s?retryWrites=true&w=majority&tls=true";

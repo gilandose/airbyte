@@ -24,9 +24,16 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import org.bson.Document;
+import org.junitpioneer.jupiter.SetEnvironmentVariable;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+/**
+ * This class is moved from mongodb-destination-strict-encrypt. The original file can be deleted
+ * completely once the migration of multi-variant connector is done.
+ */
+@SetEnvironmentVariable(key = "DEPLOYMENT_MODE",
+    value = "CLOUD")
 public class MongodbDestinationStrictEncryptAcceptanceTest extends DestinationAcceptanceTest {
 
   private static final Path CREDENTIALS_PATH = Path.of("secrets/credentials.json");
@@ -79,7 +86,7 @@ public class MongodbDestinationStrictEncryptAcceptanceTest extends DestinationAc
 
   @Override
   protected String getImageName() {
-    return "airbyte/destination-mongodb-strict-encrypt:dev";
+    return "airbyte/destination-mongodb:dev";
   }
 
   @Override
@@ -116,7 +123,7 @@ public class MongodbDestinationStrictEncryptAcceptanceTest extends DestinationAc
 
     final JsonNode invalidStandaloneConfig = getConfig();
 
-    ((ObjectNode) invalidStandaloneConfig).put(MongoDbDestinationUtils.INSTANCE_TYPE, instanceConfig);
+    ((ObjectNode) invalidStandaloneConfig).put(MongodbDestinationUtils.INSTANCE_TYPE, instanceConfig);
 
     final AirbyteConnectionStatus actual = new MongodbDestinationStrictEncrypt().check(invalidStandaloneConfig);
     final AirbyteConnectionStatus expected =
