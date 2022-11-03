@@ -1,7 +1,7 @@
 import { faSlack } from "@fortawesome/free-brands-svg-icons";
 import { faRocket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import classnames from "classnames";
+import classNames from "classnames";
 import React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { NavLink, useLocation } from "react-router-dom";
@@ -14,8 +14,8 @@ import { useConfig } from "config";
 import { useCurrentWorkspace } from "hooks/services/useWorkspace";
 import { links } from "utils/links";
 
-import { DropdownMenu } from "../../../components/ui/DropdownMenu";
 import { DocsIcon } from "../../../components/icons/DocsIcon";
+import { DropdownMenu } from "../../../components/ui/DropdownMenu";
 import { RoutePaths } from "../../../pages/routePaths";
 import ConnectionsIcon from "./components/ConnectionsIcon";
 import DestinationIcon from "./components/DestinationIcon";
@@ -31,7 +31,7 @@ export const useCalculateSidebarStyles = () => {
 
   const menuItemStyle = (isActive: boolean) => {
     const isChild = location.pathname.split("/").length > 4 && location.pathname.split("/")[3] !== "settings";
-    return classnames(styles.menuItem, { [styles.active]: isActive, [styles.activeChild]: isChild && isActive });
+    return classNames(styles.menuItem, { [styles.active]: isActive, [styles.activeChild]: isChild && isActive });
   };
 
   return ({ isActive }: { isActive: boolean }) => menuItemStyle(isActive);
