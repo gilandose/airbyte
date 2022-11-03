@@ -10,7 +10,6 @@ import { DropDown } from "components/ui/DropDown";
 import { DropdownProps } from "components/ui/DropDown";
 
 import { Geography } from "core/request/AirbyteClient";
-import { theme } from "packages/cloud/theme";
 
 import styles from "./GeographyDropdown.module.scss";
 
@@ -65,30 +64,6 @@ export const GeographyDropdown: React.FC<DropdownProps<GeographySelectOption>> =
   };
 
   const customStyles: StylesConfig<GeographySelectOption> = {
-    option: (base, state) => {
-      let backgroundColor = theme.white;
-      const color = theme.black;
-      const borderRadius = "10px";
-
-      if (state.isSelected) {
-        backgroundColor = theme.blue50;
-      }
-
-      if (state.isFocused) {
-        backgroundColor = theme.grey50;
-      }
-
-      if (state.isFocused && state.isSelected) {
-        backgroundColor = theme.blue50;
-      }
-
-      return {
-        ...base,
-        backgroundColor,
-        color,
-        borderRadius,
-      };
-    },
     valueContainer: () => ({
       display: "flex",
     }),
