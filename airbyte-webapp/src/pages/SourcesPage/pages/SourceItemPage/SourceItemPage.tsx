@@ -21,8 +21,8 @@ import { ConnectorDocumentationWrapper } from "views/Connector/ConnectorDocument
 
 import {
   DropdownMenuItemElementType,
+  DropdownMenuItemIconPositionType,
   DropdownMenuOptionType,
-  IconPositionType,
 } from "../../../../components/ui/DropdownMenu";
 import { useDestinationList } from "../../../../hooks/services/useDestinationHook";
 import { RoutePaths } from "../../../routePaths";
@@ -67,7 +67,7 @@ const SourceItemPage: React.FC = () => {
         return {
           as: "button" as DropdownMenuItemElementType,
           icon: <ConnectorIcon icon={destinationDef?.icon} />,
-          iconPosition: IconPositionType.RIGHT,
+          iconPosition: "right" as DropdownMenuItemIconPositionType,
           displayName: item.name,
           value: item.destinationId,
         };

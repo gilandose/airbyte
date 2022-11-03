@@ -6,7 +6,7 @@ import React from "react";
 import { Text } from "components/ui/Text";
 
 import styles from "./DropdownMenu.module.scss";
-import { DropdownMenuProps, IconPositionType, MenuItemContentProps, DropdownMenuOptionType } from "./types";
+import { DropdownMenuProps, MenuItemContentProps, DropdownMenuOptionType } from "./types";
 
 const MenuItemContent: React.FC<React.PropsWithChildren<MenuItemContentProps>> = ({ data }) => {
   return (
@@ -46,8 +46,8 @@ export const DropdownMenu: React.FC<React.PropsWithChildren<DropdownMenuProps>> 
       ...anchorProps,
       "data-id": item.displayName,
       className: classNames(styles.item, item?.className, {
-        [styles.iconPositionLeft]: (item?.iconPosition === IconPositionType.LEFT && item.icon) || !item?.iconPosition,
-        [styles.iconPositionRight]: item?.iconPosition === IconPositionType.RIGHT,
+        [styles.iconPositionLeft]: (item?.iconPosition === "left" && item.icon) || !item?.iconPosition,
+        [styles.iconPositionRight]: item?.iconPosition === "right",
         [styles.active]: active,
       }),
       title: item.displayName,

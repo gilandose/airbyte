@@ -5,16 +5,14 @@ export type DisplacementType = 5 | 10; // $spacing-sm, $spacing-md
 
 export type DropdownMenuItemElementType = "a" | "button";
 
-export enum IconPositionType {
-  LEFT = "left",
-  RIGHT = "right",
-}
+export type DropdownMenuItemIconPositionType = "left" | "right";
 
 export interface DropdownMenuOptionType {
   as?: DropdownMenuItemElementType;
   icon?: React.ReactNode;
-  iconPosition?: IconPositionType;
+  iconPosition?: DropdownMenuItemIconPositionType;
   displayName: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   value?: any;
   href?: string;
   className?: string;

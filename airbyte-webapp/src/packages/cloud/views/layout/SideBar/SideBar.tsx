@@ -9,8 +9,8 @@ import { NavLink } from "react-router-dom";
 
 import { Link } from "components";
 import { CreditsIcon } from "components/icons/CreditsIcon";
-import { DropdownMenu } from "components/ui/DropdownMenu";
 import { DocsIcon } from "components/icons/DocsIcon";
+import { DropdownMenu } from "components/ui/DropdownMenu";
 import { Text } from "components/ui/Text";
 
 import { useExperiment } from "hooks/services/Experiment";

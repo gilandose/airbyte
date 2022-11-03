@@ -9,7 +9,11 @@ import { HeadTitle } from "components/common/HeadTitle";
 import { ItemTabs, StepsTypes, TableItemTitle } from "components/ConnectorBlocks";
 import Placeholder, { ResourceTypes } from "components/Placeholder";
 import { Breadcrumbs } from "components/ui/Breadcrumbs";
-import { DropdownMenuItemElementType, DropdownMenuOptionType, IconPositionType } from "components/ui/DropdownMenu";
+import {
+  DropdownMenuItemElementType,
+  DropdownMenuItemIconPositionType,
+  DropdownMenuOptionType,
+} from "components/ui/DropdownMenu";
 import { PageHeader } from "components/ui/PageHeader";
 
 import { useTrackPage, PageTrackingCodes } from "hooks/services/Analytics";
@@ -66,7 +70,7 @@ const DestinationItemPage: React.FC = () => {
         return {
           as: "button" as DropdownMenuItemElementType,
           icon: <ConnectorIcon icon={sourceDef?.icon} />,
-          iconPosition: IconPositionType.RIGHT,
+          iconPosition: "right" as DropdownMenuItemIconPositionType,
           displayName: item.name,
           value: item.sourceId,
         };
